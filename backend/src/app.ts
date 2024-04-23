@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import config from './config';
 import { apiNotFound } from './utils/API-not-found';
+import { routes } from './app/routes';
 
 const app: Application = express();
 
@@ -14,6 +15,8 @@ app.get('/', (req: Request, res: Response) => {
   <a href="${config.frontend_url}">visit frontend</a>
   `);
 });
+
+app.use('/api/v1', routes);
 
 // middleware
 // app.use(globalErrorhandler);
